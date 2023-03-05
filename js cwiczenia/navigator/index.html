@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nawigator lokalizacji</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<p id="demo">Kliknij przycisk, aby uzyskać swoją lokalizację.</p>
+	<button onclick="getLocation()">Pobierz lokalizację</button>
+
+	<script>
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				document.getElementById("demo").innerHTML = "Twoja przeglądarka nie obsługuje geolokalizacji.";
+			}
+		}
+
+		function showPosition(position) {
+			var latitude = position.coords.latitude;
+			var longitude = position.coords.longitude;
+			document.getElementById("demo").innerHTML = "Twoja lokalizacja to: " + latitude + ", " + longitude;
+		}
+	</script>
+</body>
+</html>
